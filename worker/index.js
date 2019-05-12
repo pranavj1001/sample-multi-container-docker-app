@@ -15,6 +15,10 @@ const fib = (index) => {
 };
 
 subscription.on('message', (channel, message) => {
+    // sets value in the hash called 'values' according to key:value pair
+    // where
+    // key: -> message
+    // value: -> fib(parseInt(message))
     redisClient.hset('values', message, fib(parseInt(message)));
 });
 subscription.subscribe('insert');
