@@ -1,0 +1,19 @@
+{
+  "name": "sample-multi-container-docker-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pranavj1001/sample-multi-container-docker-app.git"
+  },
+  "author": "Pranav Jain",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pranavj1001/sample-multi-container-docker-app/issues"
+  },
+  "homepage": "https://github.com/pranavj1001/sample-multi-container-docker-app#readme"
+}
