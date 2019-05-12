@@ -23,6 +23,16 @@ class FibonacciCalculator extends Component {
         this.setState({ seenIndexes: seenIndexes.data });
     }
 
+    handleSubmit = async (event) => {
+        event.preventDefault();
+
+        await axios.post('/api/values',  {
+            index: this.state.index
+        });
+
+        this.setState({ index: '' });
+    }
+
     renderSeenIndices() {
         return this.state.seenIndexes.map(({ number }) => number).join(', ');
     }
@@ -31,17 +41,25 @@ class FibonacciCalculator extends Component {
         const entries = [];
 
         for (let key in this.state.values) {
-            
+            entries.push(
+                <div key={key}>
+                    For index {key}, the calculated value was {this.state.values[key]}
+                </div>
+            );
         }
-        return this.state.values
+
+        return entries;
     }
 
     render() {
         return (
             <div>
-                <form>
+                <form onSubmit={this.handleSubmit}>
                     <label>Enter your label</label>
-                    <input />
+                    <input 
+                        value="{this.state.index}"
+                        onChange={event => this.setState({ index: event.target.value })}
+                    />
                     <button>Submit</button>
                 </form>
 
@@ -54,3 +72,5 @@ class FibonacciCalculator extends Component {
         );
     }
 }
+
+export default FibonacciCalculator;
