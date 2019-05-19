@@ -1,9 +1,9 @@
 # tag name: pranavj1001/smcda-client
-FROM node:alpine
+FROM node:8-alpine
 
 WORKDIR '/app'
 
-COPY ./package.json ./
+COPY package.json .
 RUN npm install
 
 COPY . .
