@@ -1,3 +1,4 @@
+# tag name: pranavj1001/smcda-server
 FROM node:alpine
 
 WORKDIR '/app'

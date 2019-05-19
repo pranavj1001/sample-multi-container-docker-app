@@ -1,5 +1,5 @@
 const keys = require('./keys');
-const constants = require('../string-constants');
+const constants = require('./string-constants');
 
 // Express App Setup starts ---------------
 const express = require('express');
