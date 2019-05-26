@@ -57,7 +57,8 @@ class FibonacciCalculator extends Component {
                 <form onSubmit={this.handleSubmit}>
                     <label>Enter your label</label>
                     <input 
-                        value="{this.state.index}"
+                        type="number"
+                        value={this.state.index}
                         onChange={event => this.setState({ index: event.target.value })}
                     />
                     <button>Submit</button>
