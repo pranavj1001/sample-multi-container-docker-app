@@ -1,0 +1,25 @@
+sudo: required
+services: 
+  - docker
+
+# build test images
+before_install:
+  - docker build -t pranavj1001/smcda-client-test -f ./client/dev.Dockerfile ./client
+
+# run tests
+script:
+  - docker run pranavj1001/smcda-client-test npm test -- --coverage
+
+after_success:
+  # build production images
+  - docker build -t pranavj1001/smcda-client ./client
+  - docker build -t pranavj1001/smcda-server ./server
+  - docker build -t pranavj1001/smcda-worker ./worker
+  - docker build -t pranavj1001/smcda-nginx ./nginx
+  # Log in to DOCKER CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # push production images to docker hub
+  - docker push pranavj1001/smcda-client
+  - docker push pranavj1001/smcda-server
+  - docker push pranavj1001/smcda-worker
+  - docker push pranavj1001/smcda-nginx
