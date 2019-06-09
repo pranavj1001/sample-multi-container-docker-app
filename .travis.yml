@@ -23,3 +23,16 @@ after_success:
   - docker push pranavj1001/smcda-server
   - docker push pranavj1001/smcda-worker
   - docker push pranavj1001/smcda-nginx
+
+deploy:
+  provider: elasticbeanstalk
+  region: ap-south-1
+  app: sample-multi-container-docker-app
+  env: SampleMultiContainerDockerApp-env
+  bucket_name: elasticbeanstalk-ap-south-1-087431259218
+  bucket_path: smcda
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: $AWS_SECRET_KEY
